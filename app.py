@@ -8,8 +8,13 @@ users=db["users"]
 
 
 @app.route('/',methods=['GET','POST'])
-def search():
-    return " hello"
+def login():
+    return render_template('login.html')
+
+@app.route('/register',methods=['GET','POST'])
+def reg():
+    return render_template('register.html')
+
 
 
 if __name__=="__main__":
