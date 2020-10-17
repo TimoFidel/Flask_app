@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
 {% block head %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}">
     <title>Register</title>
     
     
 {% endblock %}
 
 {% block body %}
-
+    <div class="container">
+        <h3 class="head">REGISTER</h3>
+        <form name='myform' action='/register' onsubmit="return ValidateEmail() " method='POST'>
+            <label>Username:</label>
+            <input type='text' name="username" id="username" required><br>
+            <br>
+            <label>Email:</label>
+            <input type='text' name="mail" id="mail" required><br>
+            <br>
+            <label>Password:</label>
+            <input type='password' name="password" id="password" required>
+            <br>
+            <br>
+            <input type="submit" value="Register">
+            <label>Already registered? <a href="/">Login</a></label>
+        </form>
+    </div>
+    <script src="static/script/register.js"></script>
+    
 
 {% endblock %}

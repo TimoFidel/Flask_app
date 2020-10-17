@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body{
-    background-color: #f6f5f5;
+    background-color: ivory;
     margin: 0px;
     padding: 0px;
 }
@@ -10,13 +10,14 @@ ul{
 }
 a{
     text-decoration: none;
+    
 }
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     height:60px;
-    background-color: #FFFFFF;
+    background-color: #342b38;
     box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
     padding: 0px 5%;
 }
@@ -26,22 +27,17 @@ nav ul{
 nav ul li a{
     margin: 30px;
     font-family: myriad pro regular;
-    color: #505050;
-    font-size: 15px;
+    color: #bbf1c8;
+    font-size: 20px;
     font-weight: 700;
 }
 .logo{
     font-family: 'RoadTest';
-    color: #000000;
+    color: #bbf1c8;
     font-size: 22px;
 }
 .test-container {
     box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
     padding: 0px 5%;
 }
-div{
-    background-color: #FFFFFF;
-    box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
-    padding: 0px 5%;
 
-}
