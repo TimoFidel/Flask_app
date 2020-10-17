@@ -18,6 +18,9 @@
                 <li><a href="/register">REGISTER</a> </li>
             </ul>
         </nav>
+        {% if error %}  
+        <div class="error"><p><strong>Error</strong>: {{error}}</p></div>  
+        {% endif %} 
         {% block body %}{% endblock %}
     </section>
 </body>

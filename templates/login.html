@@ -8,14 +8,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div>
         <h3 class="head">LOGIN</h3>
         <form action='/' method='POST'>
             <label>Username:</label>
             <input type='text' name="username" id="username" required><br>
             <br>
             <label>Password:</label>
-            <input type='text' name="password" id="password" required><br>
+            <input type='password' name="password" id="password" required><br>
             <br>
             <input type="submit" value="Login">
             <label>New User? <a href="/register">Register</a></label>

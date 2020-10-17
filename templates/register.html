@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div>
         <h3 class="head">REGISTER</h3>
         <form name='myform' action='/register' onsubmit="return ValidateEmail() " method='POST'>
             <label>Username:</label>
@@ -26,6 +26,4 @@
         </form>
     </div>
     <script src="static/script/register.js"></script>
-    
-
 {% endblock %}

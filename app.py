@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for,render_template
+from flask import Flask, request, url_for,render_template,flash,redirect
 from flask_pymongo import PyMongo,MongoClient
 
 app=Flask(__name__)
@@ -21,20 +21,23 @@ def verifyuser(username ):
 
 @app.route('/',methods=['GET','POST'])
 def login():
+    error=None
     if request.method =='POST':
         user=request.form['username']
         password=request.form['password']
         correctpw=verifypw(user,password)
         if correctpw:
-            return render_template('home.html')
+            return redirect(url_for('home'))
         else:
-            return render_template('login.html')
-
+            error="Invalid Username or Password"
+            return render_template('login.html', error=error)
     else:
+        error=None
         return render_template('login.html')
 
 @app.route('/register',methods=['GET','POST'])
 def reg():
+    error=None
     if request.method =='POST':
         user=request.form['username']
         email=request.form['mail']
@@ -42,14 +45,19 @@ def reg():
         verify=verifyuser(user)
         if verify:
             users.insert_one({'Username':user,'Email':email,'Password':password})
-            return render_template('login.html')
+            return redirect(url_for('login'))
         else:
-            return render_template('register.html')
+            error="Username already exist"
+            return render_template('register.html',error=error)
 
 
     else:
+        error=None
         return render_template('register.html')
 
+@app.route('/home',methods=['GET','POST'])
+def home():
+    return render_template("home.html")
 
 
 if __name__=="__main__":
