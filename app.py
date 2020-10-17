@@ -1,5 +1,6 @@
 from flask import Flask, request, url_for,render_template,flash,redirect
 from flask_pymongo import PyMongo,MongoClient
+import bcrypt
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ users = db["users"]
 
 def verifypw(user, password):
     pw = users.find({'Username':user})[0]['Password']
-    if pw == password:
+    if bcrypt.hashpw(password.encode('utf-8'), pw) == pw:
         return True
     else:
         return False
@@ -44,8 +45,10 @@ def reg():
         email = request.form['mail']
         password = request.form['password']
         verify = verifyuser(user)
+
         if verify:
-            users.insert_one({'Username':user,'Email':email,'Password':password})
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'Username':user,'Email':email,'Password':hashed_password})
             return redirect(url_for('login'))
         else:
             error = "Username already exist"
